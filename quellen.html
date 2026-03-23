@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KosmoeulenPost - Quellen & Referenzen</title>
+
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;400;700&display=swap"
+        rel="stylesheet">
+
+    <!-- External CSS -->
+    <link href="css/style.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="stars-bg" id="star-field"></div>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a href="KosmoeulenPost.html" class="navbar-brand d-flex align-items-center gap-3">
+                <img src="assets/images/Logo.png" alt="KosmoeulenPost Logo" class="brand-logo">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto gap-3">
+                    <li class="nav-item">
+                        <a class="nav-link" href="KosmoeulenPost.html">Fly Home</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <main style="padding-top: 140px;">
+        <div class="container">
+            <div class="content-wrapper text-center">
+                <h1 class="mb-5">Quellen & Referenzen</h1>
+
+                <p class="section-intro mb-5">
+                    Unsere Website verpflichtet sich zur Einhaltung von Lizenzbestimmungen und verwendet ausschließlich
+                    externe Quellen, welche frei von Lizenzbeschränkungen sind. Alle anderen Inhalte, sofern nicht
+                    anders angegeben, wurden von unserem Team eigenständig erstellt und unterliegen unserem eigenen
+                    geistigen Eigentum.
+                </p>
+
+                <!-- Fotografie (self-made) -->
+                <h2 class="mb-5">Fotografie (selbst erstellt)</h2>
+                <p class="mb-5"> Fotografie (ohne Titel): <br>
+                    <strong>Mariyana Polehenko</strong>, ohne Titel, selbst fotografiert,
+                    projektbezogen persönlich erstellt und freigegeben.
+
+                    <!-- Bild- und Inhaltsquellen -->
+
+                <h2 class="mb-5">Bilder & Inhalte</h2>
+
+                <div class="mb-5">
+                    <p>
+                        <a href="https://www.gettyimages.de/detail/foto/little-girl-making-christmas-card-lizenzfreies-bild/2112457359"
+                            target="_blank" class="source-link">
+                            Getty Images – Mädchen bastelt Weihnachtskarte
+                        </a>
+                    </p>
+                    <p>
+                        <a href="https://www.pexels.com/de-de/foto/weibliche-schnee-eule-in-all-ihrer-pracht-19898701/"
+                            target="_blank" class="source-link">
+                            Pexels – Schnee-Eule
+                        </a>
+                    </p>
+                    <p>
+                        <a href="https://de.freepik.com/kostenloses-ki-bild/digitale-kunst-galaxie_93625933.htm"
+                            target="_blank" class="source-link">
+                            Freepik – KI-Bild Galaxie
+                        </a>
+                    </p>
+                    <p>
+                        <a href="https://www.craiyon.com/en/image/PKQX8x76Q1W_GTUvZ118Fg" target="_blank"
+                            class="source-link">
+                            Craiyon – KI-generiertes Bild
+                        </a>
+                    </p>
+                    <p>
+                        <a href="https://www.freepik.com/free-ai-image/planets-solar-system-universe_36305583.htm"
+                            target="_blank" class="source-link">
+                            Freepik – Planeten & Universum
+                        </a>
+                    </p>
+                </div>
+                <!-- Sounds -->
+                <h2 class="mb-5">Sounds</h2>
+                <p><strong>Christmas Short</strong><br>
+                    <a href="https://pixabay.com/music/christmas-christmas-short-v1-254790/" target="_blank"
+                        class="source-link">
+                        Datei: christmas-short-v1-254790.mp3
+                    </a>
+                </p>
+                Autor: DanaMusic (Pixabay)<br>
+                Erstellungsdatum: 28 October 2024
+
+            </div>
+        </div>
+    </main>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Twinkling stars -->
+    <script>
+        function generateStars() {
+            const container = document.getElementById('star-field');
+            for (let i = 0; i < 120; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                star.style.left = `${Math.random() * 100}%`;
+                star.style.top = `${Math.random() * 100}%`;
+                const size = Math.random() * 2 + 1;
+                star.style.width = star.style.height = `${size}px`;
+                star.style.animationDelay = `${Math.random() * 6}s`;
+                container.appendChild(star);
+            }
+        }
+        window.addEventListener('load', generateStars);
+    </script>
+
+    <!-- Footer -->
+    <footer class="text-center py-4 bg-black bg-opacity-75 border-top border-white-50 mt-5">
+        <div class="legal-text">
+            © 2026 Die Eule ist unser Symbol für Weisheit und Schutz. In der Dunkelheit des Weltraums ist sie
+            der Kompass, der sicherstellt, dass kein Gefühl verloren geht. | Alle Rechte vorbehalten.
+        </div>
+        <div class="mt-3">
+            <a href="impressum.html" class="text-secondary text-decoration-none mx-3">Impressum</a>
+            <a href="quellen.html" class="text-secondary text-decoration-none mx-3">Refrences</a>
+
+        </div>
+    </footer>
+</body>
+
+</html>

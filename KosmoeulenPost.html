@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KosmoeulenPost - Homepage</title>
+
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- Google Fonts: Roboto Condensed -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;400;700&display=swap" rel="stylesheet">
+
+    <!-- External custom CSS – all your styles moved here -->
+    <link href="css/style.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="stars-bg" id="star-field"></div>
+
+    <!-- Imitation of scanning and sending window -->
+    <div id="send-modal">
+        <div class="modal-content-custom">
+            <div id="scanning-ui">
+                <div class="position-relative mb-4 overflow-hidden rounded-3 border border-white-50"
+                     style="height: 250px; background: rgba(255,255,255,0.05);">
+                    <div class="scanner-line"></div>
+                    <div class="d-flex align-items-center justify-content-center h-100 opacity-25">
+                        <span style="font-size: 5rem;">📝</span>
+                    </div>
+                </div>
+                <h3 class="text-white text-uppercase tracking-widest mb-2">Digitalisierung...</h3>
+                <p id="scan-hint" class="text-metallic fst-italic mb-4">„Jeder Federstrich trägt Ihre Geschichte.“</p>
+                <div class="progress" style="height: 10px; background: rgba(255,255,255,0.1);">
+                    <div id="scan-progress" class="progress-bar bg-warning" role="progressbar" style="width: 0%"></div>
+                </div>
+            </div>
+
+            <div id="success-ui" class="d-none">
+                <div style="font-size: 4rem;" class="mb-4">🚀</div>
+                <h3 class="text-gold text-uppercase mb-3">Bereit für den Quantensprung!</h3>
+                <p class="text-metallic mb-4">Ihre Gefühle reisen nun sicher ans Ziel.</p>
+                <button onclick="closeModalAndTrack()" class="btn-gold">Zur Sendungsverfolgung</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a href="#" class="navbar-brand d-flex align-items-center gap-3"
+               onclick="navigateTo('home'); return false;">
+                <img src="assets/images/Logo.png" alt="KosmoeulenPost-Logo mit dem KEP-Akronym, wobei ein Brief-Symbol in die Mitte des Buchstabens E integriert ist" class="brand-logo">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto gap-3">
+                    <li class="nav-item"><a class="nav-link" onclick="navigateTo('home')">Brief Scannen</a></li>
+                    <li class="nav-item"><a class="nav-link" onclick="navigateTo('technik')">Technik</a></li>
+                    <li class="nav-item"><a class="nav-link" onclick="navigateTo('radio')">Radiospot</a></li>
+                    <li class="nav-item"><a class="nav-link" onclick="navigateTo('tracking')">Tracking</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <main style="padding-top: 80px;">
+        <!-- First Section：Slogan Block and sending button -->
+        <section id="home" class="d-flex align-items-center justify-content-center text-center px-3"
+                 style="min-height: 90vh;">
+            <div class="container">
+                <h1 class="display-1 fw-bold text-white mb-4 text-uppercase tracking-tight">
+                    KOSMOEULEN <span class="text-gold">POST</span>
+                </h1>
+                <p class="lead text-metallic mb-5 fst-italic opacity-75 fs-3">
+                    "Unsere Eulen finden jeden Stern - wie durch Zauberei!"
+                </p>
+
+                <div class="mb-5">
+                    <button onclick="openSendModal()" class="btn-gold px-5 py-3 fs-4">
+                        🚀 Jetzt Brief Scannen & Senden
+                    </button>
+                </div>
+
+                <div class="mt-4">
+                    <p class="text-gold text-uppercase tracking-widest">
+                        Analoge Wärme im digitalen Raum. Ein Stück Zuhause im All.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Brand Philosophy -->
+        <section class="py-5"
+                 style="background: rgba(0, 29, 81, 0.4); border-top: 1px solid rgba(255,255,255,0.05); border-bottom: 1px solid rgba(255,255,255,0.05);">
+            <div class="container py-4">
+                <div class="row align-items-center">
+                    <div class="col-md-7 text-md-start text-center mb-4 mb-md-0">
+                        <h2 class="text-gold fw-bold mb-4 text-uppercase tracking-widest">Warum wir?</h2>
+                        <p class="fs-5 text-metallic fst-italic mx-auto" style="max-width: 800px; line-height: 1.8;">
+                            „In einer Zeit, in der Nachrichten nur noch aus Nullen und Einsen bestehen, ist das
+                            geschriebene Wort eine Rebellion gegen die Kälte des Vakuums. Wir glauben daran, dass die Seele eines
+                            Menschen in seiner Handschrift wohnt.“
+                        </p>
+                    </div>
+                    <div class="col-md-5">
+                        <img src="assets/images/brand_concept_art.jpg" alt="Brand concept art" class="img-fluid rounded-4 shadow-lg"
+                             style="max-width: 70%; display: block; margin: auto;">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!--About brand-->
+        <section class="about-section">
+            <div class="about-slider">
+                <button class="slide-btn prev">‹</button>
+
+                <img src="assets/images/team1.jpg" class="slide active" alt="process photo 1">
+                <img src="assets/images/team2.jpg" class="slide" alt="process photo 2">
+                <img src="assets/images/team3.jpg" class="slide" alt="process photo 3">
+                <img src="assets/images/team41.jpg" class="slide" alt="process photo 4">
+                <img src="assets/images/team51.jpg" class="slide" alt="process photo 5">
+
+                <button class="slide-btn next">›</button>
+            </div>
+
+            <div class="about-text">
+                <h3 class="text-gold fw-bold mb-4 text-uppercase tracking-widest"> Wer sind wir?</h3>
+                <p class="fs-5 text-metallic" style="max-width: 800px; line-height: 1.6;">
+                    Eine Dienstleistungsservice für die Briefzustellung an Weltraumreisende. Unter der Annahme einer Gegenwart, in
+                    der Weltraumreisen 2-3 Jahre dauern, bieten wir eine Lösung für das Problem
+                    der teuren und emotional kalten digitalen Kommunikation an.
+                </p>
+
+                <h3 class="text-gold fw-bold mb-4 text-uppercase tracking-widest">So geht es:</h3>
+                <p class="fs-5 text-metallic" style="max-width: 800px; line-height: 1.6;">
+                    Sie scannen auf der Erde ihre handgeschriebenen Briefe.
+                    Diese Daten werden ins All gesendet, wo ein Roboter den Brief mit echter Tinte
+                    und der exakten Handschrift des Absenders auf Papier reproduziert.
+                </p>
+            </div>
+        </section>
+
+        <!-- Section 2：der Technikprozess -->
+        <section id="technik" class="py-5">
+            <div class="container py-5">
+                <div class="text-center mb-5">
+                    <h2 class="display-4 fw-bold text-gold mb-3 text-uppercase">Die Brücke zwischen den Welten</h2>
+                    <p class="fs-5 text-metallic opacity-75">
+                        Ein Wunder der Technik, angetrieben von Sehnsucht.
+                    </p>
+                </div>
+
+                <div class="row g-4">
+                    <div class="col-md-4">
+                        <div class="img-card p-4 d-flex flex-column h-100">
+                            <h3 class="fs-4 fw-bold text-white mb-3 text-uppercase">1. Der Scan der Seele</h3>
+                            <p class="text-metallic">Jede Wölbung des Papiers wird erfasst. Wir digitalisieren nicht nur
+                                Worte, sondern die körperliche Geste.</p>
+                            <img src="assets/images/technik_1.jpg" alt="Technik 1 : Digitaler Scan-Prozess, der die detaillierte Handschrift und die persönliche Note eines physischen Papierbriefs erfasst" class="process-img mt-auto">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="img-card p-4 d-flex flex-column h-100">
+                            <h3 class="fs-4 fw-bold text-white mb-3 text-uppercase">2. Quanten-Reise</h3>
+                            <p class="text-metallic">Als verschlüsseltes Datenpaket reist Ihre Nachricht durch
+                                Wurmlöcher. Die „Kosmoeule“ wacht über jedes Bit.</p>
+                            <img src="assets/images/technik_2.jpg" alt="Technik 2 : Eine magische Szene, in der Eulen und Heißluftballons gemeinsam Briefe durch den Himmel zustellen" class="process-img mt-auto">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="img-card p-4 d-flex flex-column h-100">
+                            <h3 class="fs-4 fw-bold text-white mb-3 text-uppercase">3. Manifestation</h3>
+                            <p class="text-metallic">In der Schwerelosigkeit reproduziert unser Präzisionsroboter mit
+                                echter Tinte Ihre Handschrift.</p>
+                            <img src="assets/images/technik_3.jpg" alt="Technik 3 : Eine spezialisierte Druckmaschine auf einer Raumstation, die in der Schwerelosigkeit Handschriften reproduziert, um einen physischen Brief zu erstellen" class="process-img mt-auto">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 3：Mias Geschichte -->
+        <section id="radio" class="py-5">
+            <div class="container py-5">
+                <div class="row align-items-center g-5">
+                    <div class="col-md-6 text-center">
+                        <img src="assets/images/mias_geschichte.png" alt="Mia dekoriert vor einem Weihnachtsbaum einen Brief für ihren Vater, während draußen vor dem Fenster eine Eule aus der verschneiten Nacht heranfliegt" class="img-fluid rounded-4 shadow-lg border border-white-50">
+                    </div>
+                    <div class="col-md-6">
+                        <h2 class="display-5 fw-bold text-gold mb-4 text-uppercase">Mias Geschichte</h2>
+                        <p class="fs-5 text-metallic mb-4 lh-lg">
+                            Mia vermisst ihren Papa. Doch als sie den Brief in den Händen hält, den ihr Papa ihr von der
+                            Raumstation geschickt hat, spürt sie seine Nähe. Tauchen Sie ein in ein akustisches Erlebnis der besonderen Art.
+                        </p>
+
+                        <a href="radio.html" style="text-decoration: none;">
+                            <div class="p-4 rounded-4 border border-warning bg-white bg-opacity-10 radio-cta-card">
+                                <div class="d-flex align-items-center justify-content-between">
+                                    <div class="d-flex align-items-center gap-3">
+                                        <div class="pulse-icon d-flex align-items-center justify-content-center">
+                                            <span class="fs-4">🎧</span>
+                                        </div>
+                                        <div>
+                                            <span class="fw-bold text-white fs-5 text-uppercase tracking-widest d-block">Zum Radiospot</span>
+                                            <small class="text-gold">Klicken, um das Audio-Erlebnis zu starten</small>
+                                        </div>
+                                    </div>
+                                    <div class="text-white fs-3">→</div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 4：Tracking -->
+        <section id="tracking" class="py-5 bg-dark bg-opacity-25">
+            <div class="container py-5 text-center">
+                <h2 class="display-5 fw-bold text-gold mb-4 text-uppercase tracking-widest">Emotionale Telemetrie</h2>
+                <p class="text-metallic mb-5 fs-5">Verfolgen Sie Ihren „Herzschlag“ durch die Galaxien.</p>
+
+                <div class="bg-white bg-opacity-10 border border-white-50 rounded-5 p-5 shadow-lg mx-auto"
+                     style="max-width: 800px;">
+                    <div class="input-group mb-5">
+                        <input type="text" id="tracking-input"
+                               class="form-control form-control-lg bg-dark text-white border-white-50 px-4"
+                               placeholder="Tracking-ID (z.B. KEP-777-XMAS)">
+                        <button onclick="startTrackingSimulation()"
+                                class="btn btn-warning fw-bold px-4 text-uppercase">Tracken</button>
+                    </div>
+
+                    <div id="tracking-result" class="d-none" style="transition: opacity 0.7s;">
+                        <div class="chart-container mb-4">
+                            <canvas id="telemetryChart"></canvas>
+                        </div>
+                        <div class="row g-3 text-start">
+                            <div class="col-6">
+                                <div class="p-3 bg-primary bg-opacity-50 rounded-3 border border-white-50">
+                                    <small class="text-gold text-uppercase d-block mb-1">Status</small>
+                                    <span class="fw-bold text-white fs-5">In Übermittlung</span>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="p-3 bg-primary bg-opacity-50 rounded-3 border border-white-50">
+                                    <small class="text-gold text-uppercase d-block mb-1">Signalqualität</small>
+                                    <span class="fw-bold text-white fs-5" id="signal-quality">98% Stabil</span>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="mt-4 text-gold fw-mono opacity-75 text-uppercase tracking-widest small">
+                            Passiert Sektor: Orion-Nebel
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Bootstrap 5 JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Your original JavaScript – unchanged -->
+    <script>
+        // 模擬發送互動邏輯
+        function openSendModal() {
+            const modal = document.getElementById('send-modal');
+            const scanning = document.getElementById('scanning-ui');
+            const success = document.getElementById('success-ui');
+            const progress = document.getElementById('scan-progress');
+            const hints = [
+                "Analysiere Tintenstruktur...",
+                "Erfasse emotionale Tiefe...",
+                "Verschlüssele Handschrift-DNA...",
+                "Bereite Quantensprung vor..."
+            ];
+            const hintText = document.getElementById('scan-hint');
+
+            modal.style.display = 'flex';
+            scanning.classList.remove('d-none');
+            success.classList.add('d-none');
+
+            let width = 0;
+            const interval = setInterval(() => {
+                if (width >= 100) {
+                    clearInterval(interval);
+                    setTimeout(() => {
+                        scanning.classList.add('d-none');
+                        success.classList.remove('d-none');
+                    }, 500);
+                } else {
+                    width += 2;
+                    progress.style.width = width + '%';
+                    if (width % 25 === 0) {
+                        hintText.innerText = hints[Math.floor(width / 25)];
+                    }
+                }
+            }, 60);
+        }
+
+        function closeModalAndTrack() {
+            document.getElementById('send-modal').style.display = 'none';
+            navigateTo('tracking');
+            document.getElementById('tracking-input').value = 'KEP-99-MIA-STORY';
+            startTrackingSimulation();
+        }
+
+        function generateStars() {
+            const container = document.getElementById('star-field');
+            for (let i = 0; i < 150; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                star.style.left = `${Math.random() * 100}%`;
+                star.style.top = `${Math.random() * 100}%`;
+                const size = Math.random() * 2 + 1;
+                star.style.width = `${size}px`;
+                star.style.height = `${size}px`;
+                star.style.animationDelay = `${Math.random() * 5}s`;
+                container.appendChild(star);
+            }
+        }
+
+        /**
+         * 修正導航捲動邏輯
+         */
+        function navigateTo(id) {
+            if (id === 'home') {
+                // 如果是首頁，直接捲動到最頂端 (0)，避免被導航列遮擋
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            } else {
+                const element = document.getElementById(id);
+                if (element) {
+                    window.scrollTo({
+                        top: element.offsetTop - 80, // 其他區塊保留 80px 的導航列偏移量
+                        behavior: 'smooth'
+                    });
+                }
+            }
+
+            // [優化] 在手機版點擊導覽連結後，自動縮回選單
+            const navbarCollapse = document.getElementById('navbarNav');
+            if (navbarCollapse.classList.contains('show')) {
+                const bsCollapse = new bootstrap.Collapse(navbarCollapse);
+                bsCollapse.hide();
+            }
+        }
+
+        let telemetryChart = null;
+        function startTrackingSimulation() {
+            if (!document.getElementById('tracking-input').value.trim()) return;
+            const resultDiv = document.getElementById('tracking-result');
+            resultDiv.classList.remove('d-none');
+            resultDiv.style.opacity = '1';
+
+            const ctx = document.getElementById('telemetryChart').getContext('2d');
+            if (telemetryChart) telemetryChart.destroy();
+            telemetryChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: Array.from({ length: 20 }, (_, i) => `T-${20 - i}s`),
+                    datasets: [{
+                        label: 'Verbindungsstabilität (%)',
+                        data: Array.from({ length: 20 }, () => Math.floor(Math.random() * 30 + 70)),
+                        borderColor: '#FFAA00',
+                        backgroundColor: 'rgba(255, 170, 0, 0.2)',
+                        fill: true,
+                        tension: 0.4,
+                        borderWidth: 3
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: { min: 0, max: 110, ticks: { color: '#E8E3DA' }, grid: { color: 'rgba(232, 227, 218, 0.05)' } },
+                        x: { ticks: { color: '#E8E3DA' }, grid: { display: false } }
+                    },
+                    plugins: { legend: { labels: { color: '#E8E3DA', font: { size: 14 } } } }
+                }
+            });
+        }
+
+        window.addEventListener('load', generateStars);
+    </script>
+
+    <!-- Bottom Legal & Navigation Footer -->
+    <div class="text-center py-3 bg-black bg-opacity-75 border-top border-white-50 mt-3" style="font-size: 0.9rem;">
+        <a href="#home" class="text-secondary text-decoration-none d-block mb-1">Zurück nach oben</a>
+        <span class="text-white">
+            © 2026 Die Eule ist unser Symbol für Weisheit und Schutz. In der Dunkelheit des Weltraums ist sie
+            der Kompass, der sicherstellt, dass kein Gefühl verloren geht. | Alle Rechte vorbehalten.
+        </span>
+        <div>
+            <a href="impressum.html" class="text-secondary text-decoration-none me-3">Impressum</a>
+            <a href="quellen.html" class="text-secondary text-decoration-none">References</a>
+        </div>
+    </div>
+
+    <script>
+        const slides = document.querySelectorAll('.slide');
+        let current = 0;
+
+        const next = document.querySelector('.next');
+        const prev = document.querySelector('.prev');
+
+        if (slides.length > 0) {
+            next.onclick = () => {
+                slides[current].classList.remove('active');
+                current = (current + 1) % slides.length;
+                slides[current].classList.add('active');
+            };
+
+            prev.onclick = () => {
+                slides[current].classList.remove('active');
+                current = (current - 1 + slides.length) % slides.length;
+                slides[current].classList.add('active');
+            };
+        }
+
+        const about = document.querySelector('.about-section');
+        window.addEventListener('scroll', () => {
+            if (!about) return;
+            const top = about.getBoundingClientRect().top;
+            if (top < window.innerHeight - 100) {
+                about.classList.add('visible');
+            }
+        });
+    </script>
+</body>
+</html>

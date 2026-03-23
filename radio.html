@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Radiospot - KosmoeulenPost</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link href="css/style.css" rel="stylesheet">
+</head>
+<body>
+    <div class="stars-bg" id="star-field"></div>
+
+    <script>
+    function generateStars() {
+        const container = document.getElementById('star-field');
+        if (!container) return; // safety check
+        for (let i = 0; i < 120; i++) {
+            const star = document.createElement('div');
+            star.className = 'star';
+            star.style.left = `${Math.random() * 100}%`;
+            star.style.top = `${Math.random() * 100}%`;
+            const size = Math.random() * 2 + 1;
+            star.style.width = star.style.height = `${size}px`;
+            star.style.animationDelay = `${Math.random() * 6}s`;
+            container.appendChild(star);
+        }
+    }
+    window.addEventListener('load', generateStars);
+    </script>
+
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="KosmoeulenPost.html">
+                <img src="assets/images/Logo.png" alt="KosmoeulenPost Logo" class="brand-logo">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link fw-bold" href="KosmoeulenPost.html">fly Home →</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container main-content" style="padding-top: 80px;">
+        <div class="row align-items-center w-100 gx-lg-5">
+            <div class="col-lg-6">
+                <div class="pe-lg-5 pb-5 pb-lg-0">
+                    <p class="text-gold text-uppercase letter-spacing-2 mb-2 fw-bold">Audio Log #01</p>
+                    <h1 class="track-title">Mias Geschichte</h1>
+                    <p class="fs-5 opacity-75 mb-4 lh-lg">
+                        "Eine Nachricht, die Lichtjahre überbrückt. Hören Sie die Geschichte, die beweist, dass Liebe keine Entfernung kennt."
+                    </p>
+                    <div class="audio-player-box">
+                        <audio controls>
+                            <source src="assets/audio/Radio_kep.mp3" type="audio/mpeg">
+                            Ihr Browser unterstützt das Audio-Element nicht.
+                        </audio>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 order-first order-lg-last">
+                <div class="lp-record-container">
+                    <div class="lp-record">
+                        <div class="lp-label" role="img" aria-label="Digitaler Scan-Prozess, der die Handschrift eines Papierbriefs erfasst"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <section class="transcript-section">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <h2 class="text-gold mb-4 text-uppercase h5 fw-bold">
+                        <i class="bi bi-file-text me-2"></i>Transkript (Barrierefreiheit)
+                    </h2>
+                    <div class="p-4 border border-white-10 rounded-3 bg-black bg-opacity-25">
+                        <p><strong>HOST (warm, freundlich):</strong> "Heute bei uns: die kleine Mia. Mia, feierst du diese Weihnachten mit deinem Papa?"</p>
+                        <p><strong>MIA (kindlich, ein bisschen traurig):</strong> "Nein, er ist wieder auf eine Weltraumdienstreise. Aber ich habe ihm diesmal eine Zeichnung als Brief geschickt."</p>
+                        <p class="text-gold small my-3"><em>[SFX: Schreibgeräusche - Bleistift auf Papier ]</em></p>
+                        <p><strong>HOST:</strong> "Wow. Und wie hast du das geschafft?"</p>
+                        <p><strong>MIA (begeistert):</strong> "Mit der Kosmoeulen Post! Die können echt zaubern."</p>
+                        <p class="text-gold small my-3"><em>[SFX: Magischer Klang - funkelnde, zauberische Melodie]</em></p>
+                        <p><strong>OFF-SPRECHER (tief, vertrauensvoll, magisch):</strong> "Kosmoeulen Post. Wir sind ein Stück Zuhause im All. Wir liefern nicht nur einen Brief, sondern auch deine Gefühle. Schick einfach deinen Brief direkt an uns, den Rest erledigen wir schon."</p>
+                        <p class="text-gold small mt-3"><em>[SFX: Eulenruf - sanft und magisch (eule)]</em></p>
+                        <p class="text-center mt-4 text-white-50 small text-uppercase">--- Ende des Spots ---</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bottom Legal & Navigation Footer -->
+    <div class="text-center py-3 bg-black bg-opacity-75 border-top border-white-50 mt-3" style="font-size: 0.9rem;">
+        <a href="#top" class="text-secondary text-decoration-none d-block mb-1">Zurück nach oben</a>
+        <span class="text-white">
+            © 2026 Die Eule ist unser Symbol für Weisheit und Schutz. In der Dunkelheit des Weltraums ist sie der Kompass, der sicherstellt, dass kein Gefühl verloren geht. | Alle Rechte vorbehalten.
+        </span>
+        <div>
+            <a href="impressum.html" class="text-secondary text-decoration-none me-3">Impressum</a>
+            <a href="quellen.html" class="text-secondary text-decoration-none">References</a>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
